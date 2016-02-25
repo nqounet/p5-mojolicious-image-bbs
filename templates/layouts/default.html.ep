@@ -1,5 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head><title><%= title %></title></head>
-  <body><%= content %></body>
+
+<head>
+    <style media="screen">
+        .error {
+            color: maroon;
+        }
+    </style>
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body>
+    <%= content %>
+</body>
+
 </html>

@@ -1,18 +1,19 @@
 package MyApp;
 use Mojo::Base 'Mojolicious';
+use Data::Printer {deparse => 1};
 
-# This method will run once at server start
+has upload_dir => sub { shift->home . '/var/upload' };
+has data_dir   => sub { shift->home . '/var/data' };
+
 sub startup {
-  my $self = shift;
+    my $app = shift;
 
-  # Documentation browser under "/perldoc"
-  $self->plugin('PODRenderer');
+    push @{$app->static->paths}, $app->upload_dir;
 
-  # Router
-  my $r = $self->routes;
+    my $r = $app->routes;
 
-  # Normal route to controller
-  $r->get('/')->to('example#welcome');
+    $r->get('/')->to('index#get');
+    $r->post('/')->to('index#post');
 }
 
 1;

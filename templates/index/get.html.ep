@@ -1,0 +1,27 @@
+<h2><%= title %></h2>
+% if ($error) {
+<p><strong class="error"><%= $error %></strong></p>
+% }
+<div>
+    %= form_for '/', method => 'POST', enctype => 'multipart/form-data', begin
+        <p>タイトル：<%= text_field 'subject' %></p>
+        <p>画像ファイル：<%= file_field 'file' %></p>
+        <p>概要：<%= text_field 'description' %></p>
+        <p><%= submit_button '投稿する' %></p>
+    % end
+</div>
+<ul>
+    % for my $entry (@{$entries}) {
+    <li>
+        <dl>
+            <dt><%= $entry->{subject} %></dt>
+            <dd>
+                <p><img src="<%= url_for($entry->{src}) %>" width="100"></p>
+                <p>
+                    <%= $entry->{description} %>
+                </p>
+            </dd>
+        </dl>
+    </li>
+    % }
+</ul>
