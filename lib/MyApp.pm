@@ -1,6 +1,5 @@
 package MyApp;
 use Mojo::Base 'Mojolicious';
-use Data::Printer {deparse => 1};
 
 has upload_dir => sub { shift->home . '/var/upload' };
 has data_dir   => sub { shift->home . '/var/data' };
