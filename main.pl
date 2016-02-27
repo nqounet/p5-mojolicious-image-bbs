@@ -8,13 +8,14 @@ get '/' => 'index';
 app->start;
 __DATA__
 @@ index.html.ep
+% title '大きなシステム';
 <!DOCTYPE html>
 <html>
-<head><title>大きなシステム</title></head>
+<head><title><%= title %></title></head>
 <body>
 
 ...
-<h1><a href="/uploader/">画像掲示板</a></h1>
+<h1><%= link_to '画像掲示板' => '/uploader/' %></h1>
 ...
 
 </body>
