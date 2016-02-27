@@ -42,7 +42,7 @@ sub post {
     my $path = path($self->app->upload_dir, 'images', $prefix, $file->filename);
     $path->parent->mkpath;
     $file->move_to($path);
-    my $src   = $path->relative($self->app->upload_dir);
+    my $src   = $path->relative($self->app->upload_dir)->absolute('/');
     my $entry = +{
         subject     => $subject,
         src         => $src->stringify,
@@ -50,7 +50,7 @@ sub post {
     };
     my $model = $self->model;
     $model->add($entry);
-    return $self->redirect_to($self->url_for('/'));
+    return $self->redirect_to('/');
 }
 
 1;

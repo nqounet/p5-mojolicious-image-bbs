@@ -16,7 +16,7 @@
         <dl>
             <dt><%= $entry->{subject} %></dt>
             <dd>
-                <p><img src="<%= url_for($entry->{src}) %>" width="100"></p>
+                <p><img src="<%= url_for($entry->{src}) %>" width="200"></p>
                 <p>
                     <%= $entry->{description} %>
                 </p>

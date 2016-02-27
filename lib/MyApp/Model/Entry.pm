@@ -8,7 +8,7 @@ has datafile => sub {
     my $self = shift;
     my $file = path($self->app->data_dir, 'data.json');
     unless ($file->is_file) {
-        $file->parent->mkpath;
+        $file->touchpath;
         $file->spew('[]');
     }
     return $file;
